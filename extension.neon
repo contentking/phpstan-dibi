@@ -7,3 +7,8 @@ services:
 		class: PHPStan\Reflection\Dibi\DibiFluentClassReflectionExtension
 		tags:
 			- phpstan.broker.methodsClassReflectionExtension
+
+	-
+		class: PHPStan\Type\Dibi\DibiResultFetchDynamicReturnTypeExtension
+		tags:
+			- phpstan.broker.dynamicMethodReturnTypeExtension
