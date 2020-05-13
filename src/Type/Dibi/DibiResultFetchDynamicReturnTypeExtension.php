@@ -5,8 +5,10 @@ namespace PHPStan\Type\Dibi;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Type\NullType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
+use PHPStan\Type\UnionType;
 
 class DibiResultFetchDynamicReturnTypeExtension implements \PHPStan\Type\DynamicMethodReturnTypeExtension
 {
@@ -27,7 +29,10 @@ class DibiResultFetchDynamicReturnTypeExtension implements \PHPStan\Type\Dynamic
 		Scope $scope
 	): Type
 	{
-		return new ObjectType('Dibi\Row');
+		return new UnionType([
+			new ObjectType('Dibi\Row'),
+			new NullType(),
+		]);
 	}
 
 }
